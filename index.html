@@ -473,6 +473,7 @@
     .skills-grid { grid-template-columns: 1fr 1fr; }
     .about-grid { grid-template-columns: 1fr; }
     .project-card { grid-template-columns: 1fr; }
+    .project-grid-2 { grid-template-columns: 1fr !important; }
     .lang-grid { grid-template-columns: repeat(3, 1fr); }
     .links-grid { grid-template-columns: 1fr; }
   }
@@ -593,11 +594,12 @@
           <div class="skill-icon" style="color:var(--neon-pink)">🛠️</div>
           <div class="skill-card-title" style="color:var(--neon-pink)">TOOLS & PLATFORMS</div>
           <div class="badge-wrap">
+            <span class="badge badge-pink">Antigravity</span>
             <span class="badge badge-pink">GitHub</span>
             <span class="badge badge-pink">Google Colab</span>
             <span class="badge badge-pink">Supabase</span>
             <span class="badge badge-pink">Railway.com</span>
-            <span class="badge badge-pink">Vercel</span>
+            <span class="badge badge-pink">Claude</span>
           </div>
         </div>
         <div class="card skill-card reveal" style="--delay:.2s">
@@ -606,8 +608,6 @@
           <div class="badge-wrap">
             <span class="badge badge-green">Generative AI</span>
             <span class="badge badge-green">Data Science</span>
-            <span class="badge badge-green">NLP</span>
-            <span class="badge badge-green">ML</span>
           </div>
         </div>
       </div>
@@ -619,26 +619,30 @@
     <div class="container">
       <div class="section-header reveal">
         <span class="section-num">03 //</span>
-        <h2 class="section-title">FEATURED <span>PROJECT</span></h2>
+        <h2 class="section-title">ALL <span>PROJECTS</span></h2>
         <div class="section-line"></div>
       </div>
-      <div class="card reveal">
+
+      <!-- Project 1: Civic Issue (featured, full-width with stats) -->
+      <div class="card reveal" style="margin-bottom:20px;">
         <div class="project-card">
           <div>
             <div class="project-tag">⚡ SIH 2025 — SMART INDIA HACKATHON</div>
             <div class="project-name">Civic Issue Reporting &amp;<br>Resolution Platform</div>
-            <p class="project-desc">AI-powered civic issue reporting web app built as part of a 6-member team. Implemented multi-modal reporting with NLP-based deduplication and spam detection to streamline government response workflows.</p>
+            <p class="project-desc">AI-powered civic issue reporting web app built as part of a 6-member team. Implemented multi-modal reporting with NLP-based deduplication and spam/fake detection to streamline government response workflows.</p>
             <ul class="project-highlights">
-              <li>Developed an admin portal with automated routing and real-time push/SMS notifications for citizens.</li>
-              <li>Projected 25–40% faster issue resolution and 30–50% rise in citizen engagement through data-driven prioritization.</li>
-              <li>Used NLP for intelligent categorization and deduplication of submitted civic complaints.</li>
+              <li>Developed an admin portal with category-based filtering, automated routing, and real-time push/SMS notifications for citizen updates.</li>
+              <li>Projected 25–40% faster issue resolution, 30–50% rise in citizen engagement, and 20–30% workforce efficiency gains.</li>
             </ul>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;">
-              <span class="badge badge-yellow">Python</span>
-              <span class="badge badge-yellow">NLP</span>
-              <span class="badge badge-yellow">AI/ML</span>
-              <span class="badge badge-yellow">Supabase</span>
-              <span class="badge badge-yellow">Vercel</span>
+              <span class="badge badge-yellow">HTML5</span>
+              <span class="badge badge-yellow">CSS3</span>
+              <span class="badge badge-yellow">JavaScript</span>
+              <span class="badge badge-yellow">React</span>
+              <span class="badge badge-yellow">Node.js</span>
+              <span class="badge badge-yellow">Express.js</span>
+              <span class="badge badge-yellow">Socket.io</span>
+              <span class="badge badge-yellow">MongoDB</span>
             </div>
           </div>
           <div class="project-side">
@@ -656,6 +660,90 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Projects 2–5: 2-column grid -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+
+        <!-- Project 2: Arabic Bot -->
+        <div class="card reveal">
+          <div class="project-tag" style="color:var(--neon-cyan);border-color:rgba(0,255,240,0.3);background:rgba(0,255,240,0.06);">🤖 DISCORD BOT</div>
+          <div class="project-name" style="font-size:.95rem;">Arabic Translation Discord Bot</div>
+          <p class="project-desc">Discord bot that translates Arabic text and images to English and Urdu using OpenRouter AI vision models, with a full OCR pipeline for Arabic script extraction from images.</p>
+          <ul class="project-highlights">
+            <li>Integrated OCR pipeline using multiple free vision models for Arabic script extraction from images.</li>
+          </ul>
+          <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:14px;">
+            <span class="badge badge-cyan">Python</span>
+            <span class="badge badge-cyan">discord.py</span>
+            <span class="badge badge-cyan">OpenRouter API</span>
+            <span class="badge badge-cyan">aiohttp</span>
+            <span class="badge badge-cyan">Flask</span>
+          </div>
+          <a href="https://github.com/mustafaansari4564/Arabic_Translation_bot" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-cyan);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+            <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
+          </a>
+        </div>
+
+        <!-- Project 3: Hindi Bot -->
+        <div class="card reveal">
+          <div class="project-tag" style="color:var(--neon-purple);border-color:rgba(191,0,255,0.3);background:rgba(191,0,255,0.06);">🤖 DISCORD BOT</div>
+          <div class="project-name" style="font-size:.95rem;">Hindi Translation Discord Bot</div>
+          <p class="project-desc">Discord bot that translates Hindi (Devanagari) text and images to English and Urdu using free AI models, with an 8-model fallback OCR pipeline.</p>
+          <ul class="project-highlights">
+            <li>Implemented Devanagari OCR using 8 fallback vision models and multi-language translation pipeline via OpenRouter API.</li>
+          </ul>
+          <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:14px;">
+            <span class="badge badge-purple">Python</span>
+            <span class="badge badge-purple">discord.py</span>
+            <span class="badge badge-purple">OpenRouter API</span>
+            <span class="badge badge-purple">aiohttp</span>
+            <span class="badge badge-purple">Flask</span>
+          </div>
+          <a href="https://github.com/mustafaansari4564/Hindi_Translation_Bot" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-purple);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+            <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
+          </a>
+        </div>
+
+        <!-- Project 4: Sanskrit Bot -->
+        <div class="card reveal">
+          <div class="project-tag" style="color:var(--neon-green);border-color:rgba(0,255,136,0.3);background:rgba(0,255,136,0.06);">🤖 DISCORD BOT</div>
+          <div class="project-name" style="font-size:.95rem;">Sanskrit Translation Discord Bot</div>
+          <p class="project-desc">Discord bot capable of translating Sanskrit text and images to English and other languages using AI, leveraging OpenRouter's free-tier vision and language models for ancient script OCR.</p>
+          <ul class="project-highlights">
+            <li>Handles ancient script OCR and multi-language output using OpenRouter free-tier vision models.</li>
+          </ul>
+          <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:14px;">
+            <span class="badge badge-green">Python</span>
+            <span class="badge badge-green">discord.py</span>
+            <span class="badge badge-green">OpenRouter API</span>
+            <span class="badge badge-green">aiohttp</span>
+            <span class="badge badge-green">Flask</span>
+          </div>
+          <a href="https://github.com/mustafaansari4564/Sanskrit_Translation_bot" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-green);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+            <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
+          </a>
+        </div>
+
+        <!-- Project 5: Mute Bot -->
+        <div class="card reveal">
+          <div class="project-tag" style="color:var(--neon-pink);border-color:rgba(255,0,170,0.3);background:rgba(255,0,170,0.06);">🛡️ DISCORD BOT</div>
+          <div class="project-name" style="font-size:.95rem;">Discord Mute Bot</div>
+          <p class="project-desc">Discord moderation bot that allows authorized staff to mute and unmute users by assigning or removing a designated role, with role-based access control.</p>
+          <ul class="project-highlights">
+            <li>Only authorized roles can execute commands; all others are denied with a custom error message.</li>
+          </ul>
+          <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:14px;">
+            <span class="badge badge-pink">Python</span>
+            <span class="badge badge-pink">discord.py</span>
+            <span class="badge badge-pink">Flask</span>
+            <span class="badge badge-pink">python-dotenv</span>
+          </div>
+          <a href="https://github.com/mustafaansari4564/Mute_Bot" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-pink);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+            <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
+          </a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -809,6 +897,14 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
   }, { threshold: 0.12 });
   reveals.forEach(el => obs.observe(el));
+
+  // Responsive project grid
+  function fixProjectGrid() {
+    const grid = document.querySelector('#projects > .container > div[style*="grid-template-columns:1fr 1fr"]');
+    if (grid) grid.style.gridTemplateColumns = window.innerWidth <= 768 ? '1fr' : '1fr 1fr';
+  }
+  fixProjectGrid();
+  window.addEventListener('resize', fixProjectGrid);
 
   // Typewriter for hero tag
   const tag = document.querySelector('.hero-tag');
