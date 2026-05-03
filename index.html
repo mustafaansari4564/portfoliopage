@@ -3,276 +3,820 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Mustafa Ansari - AI & Data Science Student Portfolio">
-<title>Mustafa Ansari | Neon Resume</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Mustafa Ansari | AI & Data Science</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root {
+    --neon-cyan: #00fff0;
+    --neon-pink: #ff00aa;
+    --neon-green: #00ff88;
+    --neon-yellow: #ffe600;
+    --neon-purple: #bf00ff;
+    --neon-blue: #0080ff;
+    --dark-bg: #020510;
+    --dark-card: #060d1f;
+    --dark-card2: #0a1628;
+    --grid-line: rgba(0,255,240,0.07);
+    --text-main: #e0f0ff;
+    --text-dim: #7090a0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark-bg);
+    color: var(--text-main);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* ─── CUSTOM CURSOR ─────────────────────────────────── */
+  .cursor { position: fixed; width: 12px; height: 12px; background: var(--neon-cyan); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform .1s, background .2s; mix-blend-mode: screen; }
+  .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--neon-cyan); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all .15s ease; opacity: .6; }
+
+  /* ─── GRID BACKGROUND ───────────────────────────────── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ─── SCANLINE OVERLAY ───────────────────────────────── */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* ─── NAV ────────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 40px;
+    background: rgba(2,5,16,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,255,240,0.15);
+  }
+  .nav-logo {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem; font-weight: 900;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 20px var(--neon-cyan);
+    letter-spacing: 2px;
+  }
+  .nav-links { display: flex; gap: 30px; }
+  .nav-links a {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--text-dim); text-decoration: none;
+    font-size: .85rem; letter-spacing: 1.5px;
+    transition: color .3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+    background: var(--neon-cyan); transition: width .3s;
+  }
+  .nav-links a:hover { color: var(--neon-cyan); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* ─── LAYOUT ─────────────────────────────────────────── */
+  .page { position: relative; z-index: 2; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+
+  /* ─── HERO ───────────────────────────────────────────── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 100px 30px 60px;
+    position: relative;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,255,240,0.08) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; }
+
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .8rem; letter-spacing: 4px;
+    color: var(--neon-green);
+    text-shadow: 0 0 10px var(--neon-green);
+    margin-bottom: 20px;
+    animation: fadeUp .8s ease both;
+  }
+
+  .hero-name {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: 4px;
+    color: #fff;
+    text-shadow: 0 0 40px rgba(0,255,240,0.4), 0 0 80px rgba(0,255,240,0.15);
+    animation: fadeUp .8s .1s ease both;
+  }
+
+  .hero-name span { color: var(--neon-cyan); }
+
+  .hero-subtitle {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.4rem; font-weight: 500;
+    color: var(--neon-pink);
+    text-shadow: 0 0 15px var(--neon-pink);
+    letter-spacing: 3px;
+    margin: 16px 0 8px;
+    animation: fadeUp .8s .2s ease both;
+  }
+
+  .hero-location {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .85rem;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    margin-bottom: 36px;
+    animation: fadeUp .8s .3s ease both;
+  }
+
+  /* ─── CONTACT PILL LINKS ─────────────────────────────── */
+  .hero-contacts {
+    display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+    margin-bottom: 28px;
+    animation: fadeUp .8s .35s ease both;
+  }
+  .contact-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 20px;
+    border: 1px solid rgba(0,255,240,0.3);
+    border-radius: 4px;
+    background: rgba(0,255,240,0.05);
+    color: var(--text-main);
+    text-decoration: none;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .8rem;
+    letter-spacing: 1px;
+    transition: all .3s;
+    backdrop-filter: blur(10px);
+  }
+  .contact-pill:hover {
+    border-color: var(--neon-cyan);
+    background: rgba(0,255,240,0.12);
+    color: var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0,255,240,0.2), inset 0 0 20px rgba(0,255,240,0.05);
+    transform: translateY(-2px);
+  }
+  .contact-pill i { font-size: .9rem; }
+
+  /* ─── SOCIAL BOXES ───────────────────────────────────── */
+  .hero-socials {
+    display: flex; gap: 14px; justify-content: center;
+    animation: fadeUp .8s .45s ease both;
+  }
+  .social-box {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 24px;
+    border: 1px solid;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'Orbitron', monospace;
+    font-size: .75rem; font-weight: 700;
+    letter-spacing: 2px;
+    transition: all .3s;
+    position: relative; overflow: hidden;
+  }
+  .social-box::before {
+    content: ''; position: absolute; inset: 0;
+    background: currentColor; opacity: 0;
+    transition: opacity .3s;
+  }
+  .social-box:hover::before { opacity: .08; }
+  .social-box:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.4); }
+  .social-box.github { border-color: var(--neon-cyan); color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0,255,240,0.2); }
+  .social-box.linkedin { border-color: var(--neon-blue); color: var(--neon-blue); box-shadow: 0 0 15px rgba(0,128,255,0.2); }
+  .social-box.github:hover { box-shadow: 0 0 30px rgba(0,255,240,0.4), 0 8px 30px rgba(0,255,240,0.15); }
+  .social-box.linkedin:hover { box-shadow: 0 0 30px rgba(0,128,255,0.4), 0 8px 30px rgba(0,128,255,0.15); }
+
+  /* ─── SCROLL ARROW ───────────────────────────────────── */
+  .scroll-down {
+    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: var(--text-dim); font-family: 'Share Tech Mono', monospace; font-size: .7rem; letter-spacing: 2px;
+    animation: bounce 2s infinite;
+    text-decoration: none;
+  }
+  .scroll-down i { font-size: 1.2rem; color: var(--neon-cyan); }
+  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+  /* ─── SECTIONS ───────────────────────────────────────── */
+  section { padding: 90px 0; }
+
+  .section-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 50px;
+  }
+  .section-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .75rem; color: var(--neon-cyan);
+    opacity: .7; letter-spacing: 2px;
+    white-space: nowrap;
+  }
+  .section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.5rem; font-weight: 700;
+    color: #fff; letter-spacing: 3px;
+    white-space: nowrap;
+  }
+  .section-title span { color: var(--neon-cyan); }
+  .section-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, rgba(0,255,240,0.4), transparent);
+  }
+
+  /* ─── CARDS ──────────────────────────────────────────── */
+  .card {
+    background: var(--dark-card);
+    border: 1px solid rgba(0,255,240,0.12);
+    border-radius: 8px;
+    padding: 28px;
+    position: relative;
+    transition: border-color .3s, box-shadow .3s, transform .3s;
+    overflow: hidden;
+  }
+  .card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+    opacity: 0; transition: opacity .3s;
+  }
+  .card:hover { border-color: rgba(0,255,240,0.35); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,255,240,0.08); }
+  .card:hover::before { opacity: 1; }
+
+  /* ─── ABOUT / SUMMARY ────────────────────────────────── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .about-text { font-size: 1.05rem; color: #b0ccd8; line-height: 1.8; }
+  .about-stat {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 24px;
+  }
+  .about-stat-num {
+    font-family: 'Orbitron', monospace; font-size: 2.5rem; font-weight: 900;
+    color: var(--neon-cyan); text-shadow: 0 0 20px var(--neon-cyan);
+    line-height: 1;
+  }
+  .about-stat-label { font-size: .85rem; color: var(--text-dim); letter-spacing: 2px; margin-top: 6px; font-family: 'Share Tech Mono', monospace; }
+
+  /* ─── SKILLS ─────────────────────────────────────────── */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  .skill-card { text-align: center; padding: 30px 20px; }
+  .skill-icon { font-size: 2rem; margin-bottom: 14px; }
+  .skill-card-title {
+    font-family: 'Orbitron', monospace; font-size: .8rem; letter-spacing: 2px;
+    margin-bottom: 18px; font-weight: 700;
+  }
+  .badge-wrap { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+
+  .badge {
+    display: inline-block; padding: 5px 14px;
+    border-radius: 3px; font-family: 'Share Tech Mono', monospace;
+    font-size: .75rem; letter-spacing: 1px;
+    border: 1px solid; transition: all .3s;
+    cursor: default;
+  }
+  .badge:hover { transform: scale(1.05); }
+  .badge-cyan { color: var(--neon-cyan); border-color: rgba(0,255,240,0.3); background: rgba(0,255,240,0.06); }
+  .badge-cyan:hover { background: rgba(0,255,240,0.15); box-shadow: 0 0 12px rgba(0,255,240,0.3); }
+  .badge-pink { color: var(--neon-pink); border-color: rgba(255,0,170,0.3); background: rgba(255,0,170,0.06); }
+  .badge-pink:hover { background: rgba(255,0,170,0.15); box-shadow: 0 0 12px rgba(255,0,170,0.3); }
+  .badge-green { color: var(--neon-green); border-color: rgba(0,255,136,0.3); background: rgba(0,255,136,0.06); }
+  .badge-green:hover { background: rgba(0,255,136,0.15); box-shadow: 0 0 12px rgba(0,255,136,0.3); }
+  .badge-yellow { color: var(--neon-yellow); border-color: rgba(255,230,0,0.3); background: rgba(255,230,0,0.06); }
+  .badge-yellow:hover { background: rgba(255,230,0,0.15); box-shadow: 0 0 12px rgba(255,230,0,0.3); }
+  .badge-purple { color: var(--neon-purple); border-color: rgba(191,0,255,0.3); background: rgba(191,0,255,0.06); }
+  .badge-purple:hover { background: rgba(191,0,255,0.15); box-shadow: 0 0 12px rgba(191,0,255,0.3); }
+
+  /* ─── PROJECT ────────────────────────────────────────── */
+  .project-card { display: grid; grid-template-columns: 1fr 300px; gap: 30px; align-items: start; }
+  .project-tag {
+    display: inline-block; padding: 4px 14px;
+    border: 1px solid var(--neon-yellow); color: var(--neon-yellow);
+    background: rgba(255,230,0,0.08); border-radius: 3px;
+    font-family: 'Share Tech Mono', monospace; font-size: .72rem; letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+  .project-name {
+    font-family: 'Orbitron', monospace; font-size: 1.15rem; font-weight: 700;
+    color: #fff; margin-bottom: 14px; line-height: 1.4;
+  }
+  .project-desc { color: #90aabb; font-size: 1rem; line-height: 1.7; margin-bottom: 18px; }
+  .project-highlights { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .project-highlights li {
+    display: flex; align-items: flex-start; gap: 10px;
+    color: #80a0b0; font-size: .92rem;
+  }
+  .project-highlights li::before {
+    content: '▸'; color: var(--neon-cyan); flex-shrink: 0; margin-top: 2px;
+  }
+
+  .project-side { display: flex; flex-direction: column; gap: 16px; }
+  .project-stat-box {
+    background: var(--dark-card2); border: 1px solid rgba(0,255,136,0.2);
+    border-radius: 6px; padding: 18px; text-align: center;
+  }
+  .project-stat-box .stat-num {
+    font-family: 'Orbitron', monospace; font-size: 1.6rem; font-weight: 900;
+    color: var(--neon-green); text-shadow: 0 0 15px var(--neon-green);
+  }
+  .project-stat-box .stat-label {
+    font-family: 'Share Tech Mono', monospace; font-size: .72rem;
+    color: var(--text-dim); letter-spacing: 1.5px; margin-top: 4px;
+  }
+
+  /* ─── EDUCATION TIMELINE ─────────────────────────────── */
+  .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .timeline::before {
+    content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px;
+    background: linear-gradient(180deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+    opacity: .4;
+  }
+  .timeline-item { display: flex; gap: 30px; padding-bottom: 36px; position: relative; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .t-dot {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 2px solid var(--neon-cyan);
+    background: var(--dark-bg);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; z-index: 1;
+    box-shadow: 0 0 15px rgba(0,255,240,0.4);
+    font-size: .9rem; color: var(--neon-cyan);
+    margin-top: 4px;
+  }
+  .t-card { flex: 1; }
+  .t-date {
+    font-family: 'Share Tech Mono', monospace; font-size: .75rem;
+    color: var(--neon-cyan); letter-spacing: 2px; margin-bottom: 8px;
+    display: inline-block; padding: 3px 10px;
+    border: 1px solid rgba(0,255,240,0.25); border-radius: 3px;
+  }
+  .t-degree {
+    font-family: 'Orbitron', monospace; font-size: 1rem; font-weight: 700;
+    color: #fff; margin-bottom: 4px;
+  }
+  .t-school { color: var(--text-dim); font-size: .92rem; margin-bottom: 8px; }
+  .t-score {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Share Tech Mono', monospace; font-size: .8rem;
+    color: var(--neon-green); margin-top: 6px;
+  }
+  .t-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: .8rem; color: var(--neon-yellow);
+    background: rgba(255,230,0,0.08); border: 1px solid rgba(255,230,0,0.25);
+    border-radius: 3px; padding: 4px 10px; margin-top: 6px;
+  }
+
+  /* ─── LANGUAGES ──────────────────────────────────────── */
+  .lang-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .lang-card { text-align: center; padding: 24px 16px; }
+  .lang-name { font-family: 'Orbitron', monospace; font-size: .85rem; font-weight: 700; color: #fff; margin-bottom: 12px; display: block; }
+  .lang-bar { height: 4px; border-radius: 2px; background: rgba(255,255,255,0.08); margin-bottom: 10px; overflow: hidden; }
+  .lang-fill { height: 100%; border-radius: 2px; }
+  .lang-level { font-family: 'Share Tech Mono', monospace; font-size: .75rem; letter-spacing: 2px; }
+  .c1 { color: var(--neon-cyan); } .c1 .lang-fill { background: var(--neon-cyan); width: 85%; box-shadow: 0 0 8px var(--neon-cyan); }
+  .b2 { color: var(--neon-green); } .b2 .lang-fill { background: var(--neon-green); width: 65%; box-shadow: 0 0 8px var(--neon-green); }
+  .a1 { color: var(--neon-pink); } .a1 .lang-fill { background: var(--neon-pink); width: 25%; box-shadow: 0 0 8px var(--neon-pink); }
+
+  /* ─── LINKS SECTION ──────────────────────────────────── */
+  .links-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .link-box {
+    display: flex; align-items: center; gap: 18px;
+    padding: 22px 24px;
+    border-radius: 6px; text-decoration: none;
+    border: 1px solid; position: relative; overflow: hidden;
+    transition: all .3s;
+  }
+  .link-box::after {
+    content: '→'; position: absolute; right: 24px; top: 50%; transform: translateY(-50%);
+    font-size: 1.2rem; transition: right .3s;
+  }
+  .link-box:hover::after { right: 18px; }
+  .link-box:hover { transform: translateY(-4px); }
+  .link-box .lb-icon { font-size: 2rem; flex-shrink: 0; }
+  .link-box .lb-text { }
+  .link-box .lb-title { font-family: 'Orbitron', monospace; font-size: .9rem; font-weight: 700; margin-bottom: 4px; }
+  .link-box .lb-sub { font-family: 'Share Tech Mono', monospace; font-size: .72rem; letter-spacing: 1px; opacity: .7; }
+
+  .lb-github { border-color: rgba(0,255,240,0.3); background: rgba(0,255,240,0.05); color: var(--neon-cyan); }
+  .lb-github:hover { border-color: var(--neon-cyan); background: rgba(0,255,240,0.1); box-shadow: 0 0 30px rgba(0,255,240,0.15); }
+  .lb-linkedin { border-color: rgba(0,128,255,0.3); background: rgba(0,128,255,0.05); color: var(--neon-blue); }
+  .lb-linkedin:hover { border-color: var(--neon-blue); background: rgba(0,128,255,0.1); box-shadow: 0 0 30px rgba(0,128,255,0.15); }
+  .lb-email { border-color: rgba(255,0,170,0.3); background: rgba(255,0,170,0.05); color: var(--neon-pink); }
+  .lb-email:hover { border-color: var(--neon-pink); background: rgba(255,0,170,0.1); box-shadow: 0 0 30px rgba(255,0,170,0.15); }
+  .lb-phone { border-color: rgba(0,255,136,0.3); background: rgba(0,255,136,0.05); color: var(--neon-green); }
+  .lb-phone:hover { border-color: var(--neon-green); background: rgba(0,255,136,0.1); box-shadow: 0 0 30px rgba(0,255,136,0.15); }
+
+  /* ─── FOOTER ─────────────────────────────────────────── */
+  footer {
+    text-align: center; padding: 40px 30px;
+    border-top: 1px solid rgba(0,255,240,0.1);
+    font-family: 'Share Tech Mono', monospace; font-size: .8rem;
+    color: var(--text-dim); letter-spacing: 2px;
+  }
+  footer span { color: var(--neon-pink); }
+
+  /* ─── ANIMATIONS ─────────────────────────────────────── */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes glitch {
+    0%,100% { clip-path: inset(0 0 98% 0); transform: translate(-2px, 0); }
+    20% { clip-path: inset(40% 0 50% 0); transform: translate(2px, 0); }
+    40% { clip-path: inset(80% 0 10% 0); transform: translate(-2px, 0); }
+    60% { clip-path: inset(20% 0 70% 0); transform: translate(2px, 0); }
+    80% { clip-path: inset(60% 0 30% 0); transform: translate(-2px, 0); }
+  }
+  .glitch-wrap { position: relative; display: inline-block; }
+  .glitch-wrap::before, .glitch-wrap::after {
+    content: attr(data-text);
+    position: absolute; inset: 0;
+    font-family: 'Orbitron', monospace;
+    font-size: inherit; font-weight: 900; letter-spacing: inherit;
+    color: #fff; pointer-events: none;
+  }
+  .glitch-wrap::before { color: var(--neon-cyan); animation: glitch 3s infinite linear; }
+  .glitch-wrap::after { color: var(--neon-pink); animation: glitch 3s .1s infinite linear reverse; }
+
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { gap: 16px; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+    .project-card { grid-template-columns: 1fr; }
+    .lang-grid { grid-template-columns: repeat(3, 1fr); }
+    .links-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
-<div class="cursor-glow"></div>
-<header class="header">
-  <div class="glitch-wrapper">
-    <h1 class="glitch" data-text="MUSTAFA ANSARI">MUSTAFA ANSARI</h1>
-  </div>
-  <h2 class="subtitle">AI & Data Science Student</h2>
-  <div class="contact-info">
-    <a href="mailto:mustafaansari4564@gmail.com" class="neon-link"><i class="fas fa-envelope"></i> mustafaansari4564@gmail.com</a>
-    <span class="neon-text-dim"><i class="fas fa-phone"></i> +91 77 3837 3227</span>
-    <span class="neon-text-dim"><i class="fas fa-map-marker-alt"></i> Pune, India 410401</span>
-  </div>
-  <div class="social-links">
-    <a href="https://github.com/mustafaansari4564" target="_blank" class="social-icon neon-btn"><i class="fab fa-github"></i> GitHub</a>
-    <a href="https://www.linkedin.com/in/mustafa-ansari-bb4058377" target="_blank" class="social-icon neon-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    <a href="https://mustafaansari4564.github.io/portfoliopage/" target="_blank" class="social-icon neon-btn"><i class="fas fa-globe"></i> Portfolio</a>
-  </div>
-</header>
 
-<main class="container">
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- Summary Section -->
-  <section class="section fade-in">
-    <h3 class="section-title"><i class="fas fa-user-astronaut"></i> Professional Summary</h3>
-    <div class="card neon-border">
-      <p>Motivated AI & Data Science student skilled in C++ and Python with a passion for learning new technologies. Familiar with tools like GitHub and Google Colab and interested in building intelligent, data-driven solutions. Eager to apply programming and analytical skills to gain practical experience in AI and data science through collaborative projects.</p>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">M.ANSARI</div>
+  <div class="nav-links">
+    <a href="#about">ABOUT</a>
+    <a href="#skills">SKILLS</a>
+    <a href="#projects">PROJECTS</a>
+    <a href="#education">EDUCATION</a>
+    <a href="#connect">CONNECT</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-tag">&lt; INITIALIZING PROFILE /&gt;</div>
+      <div class="glitch-wrap" data-text="MUSTAFA ANSARI">
+        <h1 class="hero-name">MUSTAFA <span>ANSARI</span></h1>
+      </div>
+      <div class="hero-subtitle">AI &amp; DATA SCIENCE ENGINEER</div>
+      <div class="hero-location"><i class="fas fa-map-marker-alt"></i>&nbsp; PUNE, INDIA &nbsp;|&nbsp; BATCH OF 2028</div>
+
+      <div class="hero-contacts">
+        <a href="mailto:mustafaansari4564@gmail.com" class="contact-pill">
+          <i class="fas fa-envelope"></i> mustafaansari4564@gmail.com
+        </a>
+        <a href="tel:+917738373227" class="contact-pill">
+          <i class="fas fa-phone"></i> +91 77 3837 3227
+        </a>
+      </div>
+
+      <div class="hero-socials">
+        <a href="https://github.com/mustafaansari4564" target="_blank" class="social-box github">
+          <i class="fab fa-github"></i> GITHUB
+        </a>
+        <a href="https://www.linkedin.com/in/mustafa-ansari-bb4058377" target="_blank" class="social-box linkedin">
+          <i class="fab fa-linkedin"></i> LINKEDIN
+        </a>
+      </div>
     </div>
+    <a class="scroll-down" href="#about">
+      SCROLL <i class="fas fa-chevron-down"></i>
+    </a>
   </section>
 
-  <div class="grid-2">
-    <!-- Skills Section -->
-    <section class="section fade-in delay-1">
-      <h3 class="section-title"><i class="fas fa-code"></i> Skills Arsenal</h3>
-      <div class="card neon-border">
-        <div class="skill-category">
-          <h4>Languages</h4>
-          <div class="badges">
-            <span class="badge primary">Python</span>
-            <span class="badge primary">C++</span>
-            <span class="badge primary">SQL</span>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-num">01 //</span>
+        <h2 class="section-title">PRO<span>FILE</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid reveal">
+        <div class="card">
+          <p class="about-text">
+            Motivated <strong style="color:var(--neon-cyan)">AI &amp; Data Science</strong> student skilled in <strong style="color:var(--neon-cyan)">C++ and Python</strong> with a passion for learning emerging technologies. Familiar with tools like GitHub and Google Colab and deeply interested in building intelligent, data-driven solutions. Eager to apply programming and analytical skills to gain practical experience through collaborative real-world projects.
+          </p>
+          <br>
+          <p class="about-text">
+            Qualified for <strong style="color:var(--neon-yellow)">IIT Madras BSc in Data Science and Applications</strong> — demonstrating strong academic foundation and commitment to excellence in the field.
+          </p>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="card about-stat">
+            <div class="about-stat-num">88%</div>
+            <div class="about-stat-label">10TH SCORE</div>
+          </div>
+          <div class="card about-stat">
+            <div class="about-stat-num">74%</div>
+            <div class="about-stat-label">12TH SCORE</div>
+          </div>
+          <div class="card about-stat" style="color:var(--neon-green)">
+            <div class="about-stat-num" style="color:var(--neon-green);text-shadow:0 0 20px var(--neon-green)">5+</div>
+            <div class="about-stat-label">TOOLS</div>
+          </div>
+          <div class="card about-stat" style="color:var(--neon-pink)">
+            <div class="about-stat-num" style="color:var(--neon-pink);text-shadow:0 0 20px var(--neon-pink)">5</div>
+            <div class="about-stat-label">LANGUAGES</div>
           </div>
         </div>
-        <div class="skill-category">
-          <h4>Tools</h4>
-          <div class="badges">
-            <span class="badge secondary">Antigravity</span>
-            <span class="badge secondary">GitHub</span>
-            <span class="badge secondary">Google Colab</span>
-            <span class="badge secondary">Supabase</span>
-            <span class="badge secondary">Railway.com</span>
-            <span class="badge secondary">Vercel</span>
-            <span class="badge secondary">discord.py</span>
-            <span class="badge secondary">OpenRouter API</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-num">02 //</span>
+        <h2 class="section-title">SKILLS <span>ARSENAL</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="card skill-card reveal">
+          <div class="skill-icon" style="color:var(--neon-cyan)">⌨️</div>
+          <div class="skill-card-title" style="color:var(--neon-cyan)">LANGUAGES</div>
+          <div class="badge-wrap">
+            <span class="badge badge-cyan">Python</span>
+            <span class="badge badge-cyan">C++</span>
+            <span class="badge badge-cyan">SQL</span>
           </div>
         </div>
-        <div class="skill-category">
-          <h4>Concepts</h4>
-          <div class="badges">
-            <span class="badge tertiary">Generative AI</span>
-            <span class="badge tertiary">Data Science</span>
-            <span class="badge tertiary">NLP</span>
-            <span class="badge tertiary">OCR</span>
+        <div class="card skill-card reveal" style="--delay:.1s">
+          <div class="skill-icon" style="color:var(--neon-pink)">🛠️</div>
+          <div class="skill-card-title" style="color:var(--neon-pink)">TOOLS & PLATFORMS</div>
+          <div class="badge-wrap">
+            <span class="badge badge-pink">GitHub</span>
+            <span class="badge badge-pink">Google Colab</span>
+            <span class="badge badge-pink">Supabase</span>
+            <span class="badge badge-pink">Railway.com</span>
+            <span class="badge badge-pink">Vercel</span>
+          </div>
+        </div>
+        <div class="card skill-card reveal" style="--delay:.2s">
+          <div class="skill-icon" style="color:var(--neon-green)">🧠</div>
+          <div class="skill-card-title" style="color:var(--neon-green)">CONCEPTS</div>
+          <div class="badge-wrap">
+            <span class="badge badge-green">Generative AI</span>
+            <span class="badge badge-green">Data Science</span>
+            <span class="badge badge-green">NLP</span>
+            <span class="badge badge-green">ML</span>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- SIH Project -->
-    <section class="section fade-in delay-2">
-      <h3 class="section-title"><i class="fas fa-project-diagram"></i> Featured Project</h3>
-      <div class="card neon-border project-card">
-        <div class="project-header">
-          <h4>Civic Issue Reporting &amp; Resolution Platform</h4>
-          <span class="project-badge">SIH 2025</span>
-        </div>
-        <p class="project-desc">AI-powered civic issue reporting web app built as part of a 6-member team. Implemented multi-modal reporting with NLP-based deduplication and spam detection.</p>
-        <ul class="project-highlights">
-          <li>Developed an admin portal with automated routing and real-time push/SMS notifications.</li>
-          <li>Projected bounds: 25-40% faster issue resolution and 30-50% rise in citizen engagement.</li>
-        </ul>
-        <div class="tech-stack">
-          <span class="badge secondary">React</span>
-          <span class="badge secondary">Node.js</span>
-          <span class="badge secondary">MongoDB</span>
-          <span class="badge secondary">Socket.io</span>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- Discord Bots Projects Section -->
-  <section class="section fade-in delay-2">
-    <h3 class="section-title"><i class="fab fa-discord"></i> Discord Bot Projects</h3>
-    <div class="projects-grid">
-
-      <!-- Arabic Translation Bot -->
-      <div class="card neon-border project-card">
-        <div class="project-header">
-          <h4>Arabic Translation Bot</h4>
-          <span class="project-badge">Python</span>
-        </div>
-        <p class="project-desc">A Discord bot that translates Arabic text and images to English and Urdu using free OpenRouter AI vision models with a multi-model OCR fallback pipeline.</p>
-        <ul class="project-highlights">
-          <li>Integrated 8+ free vision models for Arabic script OCR from images.</li>
-          <li>Supports text translation and image-to-text extraction with automatic fallback.</li>
-        </ul>
-        <div class="tech-stack">
-          <span class="badge secondary">Python</span>
-          <span class="badge secondary">discord.py</span>
-          <span class="badge secondary">OpenRouter API</span>
-          <span class="badge secondary">aiohttp</span>
-          <span class="badge secondary">Flask</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/mustafaansari4564/Arabic_Translation_bot" target="_blank" class="neon-link project-link">
-            <i class="fab fa-github"></i> View on GitHub
-          </a>
-        </div>
-      </div>
-
-      <!-- Hindi Translation Bot -->
-      <div class="card neon-border project-card">
-        <div class="project-header">
-          <h4>Hindi Translation Bot</h4>
-          <span class="project-badge">Python</span>
-        </div>
-        <p class="project-desc">A Discord bot that translates Hindi (Devanagari script) text and images to English and Urdu using AI-powered OCR and multi-language translation.</p>
-        <ul class="project-highlights">
-          <li>Implemented Devanagari OCR using 8 fallback free vision models via OpenRouter.</li>
-          <li>Commands: <code>!he</code> for English, <code>!hu</code> for Urdu, with image support.</li>
-        </ul>
-        <div class="tech-stack">
-          <span class="badge secondary">Python</span>
-          <span class="badge secondary">discord.py</span>
-          <span class="badge secondary">OpenRouter API</span>
-          <span class="badge secondary">aiohttp</span>
-          <span class="badge secondary">Flask</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/mustafaansari4564/Hindi_Translation_Bot" target="_blank" class="neon-link project-link">
-            <i class="fab fa-github"></i> View on GitHub
-          </a>
-        </div>
-      </div>
-
-      <!-- Sanskrit Translation Bot -->
-      <div class="card neon-border project-card">
-        <div class="project-header">
-          <h4>Sanskrit Translation Bot</h4>
-          <span class="project-badge">Python</span>
-        </div>
-        <p class="project-desc">A Discord bot capable of translating Sanskrit text and images into English and other modern languages using AI models specialized in ancient scripts.</p>
-        <ul class="project-highlights">
-          <li>Leveraged OpenRouter free-tier vision models for ancient Devanagari script OCR.</li>
-          <li>Multi-language output with intelligent model fallback for best accuracy.</li>
-        </ul>
-        <div class="tech-stack">
-          <span class="badge secondary">Python</span>
-          <span class="badge secondary">discord.py</span>
-          <span class="badge secondary">OpenRouter API</span>
-          <span class="badge secondary">aiohttp</span>
-          <span class="badge secondary">Flask</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/mustafaansari4564/Sanskrit_Translation_bot" target="_blank" class="neon-link project-link">
-            <i class="fab fa-github"></i> View on GitHub
-          </a>
-        </div>
-      </div>
-
-      <!-- Mute Bot -->
-      <div class="card neon-border project-card">
-        <div class="project-header">
-          <h4>Discord Mute Bot</h4>
-          <span class="project-badge">Python</span>
-        </div>
-        <p class="project-desc">A Discord moderation bot that allows authorized staff members to mute and unmute users by assigning/removing roles with role-based access control.</p>
-        <ul class="project-highlights">
-          <li>Role-based authorization system — only specific roles can use commands.</li>
-          <li>Commands: <code>$mute @user</code> and <code>$unmute @user</code> with embed responses.</li>
-        </ul>
-        <div class="tech-stack">
-          <span class="badge secondary">Python</span>
-          <span class="badge secondary">discord.py</span>
-          <span class="badge secondary">Flask</span>
-          <span class="badge secondary">dotenv</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/mustafaansari4564/Mute_Bot" target="_blank" class="neon-link project-link">
-            <i class="fab fa-github"></i> View on GitHub
-          </a>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <!-- Education Section -->
-  <section class="section fade-in delay-3">
-    <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Education Timeline</h3>
-    <div class="timeline">
-      <div class="timeline-item neon-border-left">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h4>Bachelor's of Engineering: AI &amp; Data Science</h4>
-          <h5>Marathwada Mitramandal's Institute of Technology, Pune</h5>
-          <p class="timeline-date">Expected 06/2028</p>
-          <p class="timeline-extra"><i class="fas fa-trophy highlight-text"></i> Qualified for IIT Madras BSc in Data Science and Applications</p>
-        </div>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-num">03 //</span>
+        <h2 class="section-title">FEATURED <span>PROJECT</span></h2>
+        <div class="section-line"></div>
       </div>
-      <div class="timeline-item neon-border-left">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h4>Higher Secondary Certificate (12th)</h4>
-          <h5>Shoeb Urdu High School And JR. College, Thane</h5>
-          <p class="timeline-date">02/2024</p>
-          <p class="timeline-score">Score: 74.33%</p>
-        </div>
-      </div>
-      <div class="timeline-item neon-border-left">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h4>Secondary School Certificate (10th)</h4>
-          <h5>Abdullah Patel High School And Jr College, Thane</h5>
-          <p class="timeline-date">03/2022</p>
-          <p class="timeline-score">Score: 88.40%</p>
+      <div class="card reveal">
+        <div class="project-card">
+          <div>
+            <div class="project-tag">⚡ SIH 2025 — SMART INDIA HACKATHON</div>
+            <div class="project-name">Civic Issue Reporting &amp;<br>Resolution Platform</div>
+            <p class="project-desc">AI-powered civic issue reporting web app built as part of a 6-member team. Implemented multi-modal reporting with NLP-based deduplication and spam detection to streamline government response workflows.</p>
+            <ul class="project-highlights">
+              <li>Developed an admin portal with automated routing and real-time push/SMS notifications for citizens.</li>
+              <li>Projected 25–40% faster issue resolution and 30–50% rise in citizen engagement through data-driven prioritization.</li>
+              <li>Used NLP for intelligent categorization and deduplication of submitted civic complaints.</li>
+            </ul>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;">
+              <span class="badge badge-yellow">Python</span>
+              <span class="badge badge-yellow">NLP</span>
+              <span class="badge badge-yellow">AI/ML</span>
+              <span class="badge badge-yellow">Supabase</span>
+              <span class="badge badge-yellow">Vercel</span>
+            </div>
+          </div>
+          <div class="project-side">
+            <div class="project-stat-box">
+              <div class="stat-num">25-40%</div>
+              <div class="stat-label">FASTER RESOLUTION</div>
+            </div>
+            <div class="project-stat-box" style="border-color:rgba(0,255,240,0.2)">
+              <div class="stat-num" style="color:var(--neon-cyan);text-shadow:0 0 15px var(--neon-cyan)">30-50%</div>
+              <div class="stat-label">MORE ENGAGEMENT</div>
+            </div>
+            <div class="project-stat-box" style="border-color:rgba(255,0,170,0.2)">
+              <div class="stat-num" style="color:var(--neon-pink);text-shadow:0 0 15px var(--neon-pink)">6</div>
+              <div class="stat-label">MEMBER TEAM</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Languages Section -->
-  <section class="section fade-in delay-4">
-    <h3 class="section-title"><i class="fas fa-language"></i> Linguistics</h3>
-    <div class="card neon-border languages-grid">
-      <div class="lang-item">
-        <span class="lang-name">English</span>
-        <span class="lang-level level-b2">B2</span>
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-num">04 //</span>
+        <h2 class="section-title">EDUCATION <span>TIMELINE</span></h2>
+        <div class="section-line"></div>
       </div>
-      <div class="lang-item">
-        <span class="lang-name">Hindi</span>
-        <span class="lang-level level-b2">B2</span>
-      </div>
-      <div class="lang-item">
-        <span class="lang-name">Urdu</span>
-        <span class="lang-level level-c1">C1</span>
-      </div>
-      <div class="lang-item">
-        <span class="lang-name">Marathi</span>
-        <span class="lang-level level-a1">A1</span>
-      </div>
-      <div class="lang-item">
-        <span class="lang-name">Arabic</span>
-        <span class="lang-level level-a1">A1</span>
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="t-dot"><i class="fas fa-graduation-cap"></i></div>
+          <div class="t-card card">
+            <span class="t-date">2024 — EXPECTED 2028</span>
+            <div class="t-degree">Bachelor of Engineering: AI &amp; Data Science</div>
+            <div class="t-school">Marathwada Mitramandal's Institute of Technology, Pune</div>
+            <div class="t-badge"><i class="fas fa-trophy"></i>&nbsp; Qualified for IIT Madras BSc in Data Science &amp; Applications</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="t-dot" style="border-color:var(--neon-purple);box-shadow:0 0 15px rgba(191,0,255,0.4);color:var(--neon-purple)"><i class="fas fa-school"></i></div>
+          <div class="t-card card">
+            <span class="t-date" style="color:var(--neon-purple);border-color:rgba(191,0,255,0.25)">FEBRUARY 2024</span>
+            <div class="t-degree">Higher Secondary Certificate (12th)</div>
+            <div class="t-school">Shoeb Urdu High School And JR. College, Thane</div>
+            <div class="t-score"><i class="fas fa-star"></i> Score: 74.33%</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="t-dot" style="border-color:var(--neon-pink);box-shadow:0 0 15px rgba(255,0,170,0.4);color:var(--neon-pink)"><i class="fas fa-book"></i></div>
+          <div class="t-card card">
+            <span class="t-date" style="color:var(--neon-pink);border-color:rgba(255,0,170,0.25)">MARCH 2022</span>
+            <div class="t-degree">Secondary School Certificate (10th)</div>
+            <div class="t-school">Abdullah Patel High School And Jr College, Thane</div>
+            <div class="t-score" style="color:var(--neon-cyan)"><i class="fas fa-star"></i> Score: 88.40%</div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-</main>
+  <!-- LANGUAGES -->
+  <section id="languages">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-num">05 //</span>
+        <h2 class="section-title">LING<span>UISTICS</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="lang-grid reveal">
+        <div class="card lang-card c1">
+          <span class="lang-name">Urdu</span>
+          <div class="lang-bar"><div class="lang-fill"></div></div>
+          <span class="lang-level">C1 — ADVANCED</span>
+        </div>
+        <div class="card lang-card b2">
+          <span class="lang-name">English</span>
+          <div class="lang-bar"><div class="lang-fill"></div></div>
+          <span class="lang-level">B2 — UPPER-INT</span>
+        </div>
+        <div class="card lang-card b2">
+          <span class="lang-name">Hindi</span>
+          <div class="lang-bar"><div class="lang-fill"></div></div>
+          <span class="lang-level">B2 — UPPER-INT</span>
+        </div>
+        <div class="card lang-card a1">
+          <span class="lang-name">Marathi</span>
+          <div class="lang-bar"><div class="lang-fill"></div></div>
+          <span class="lang-level">A1 — BEGINNER</span>
+        </div>
+        <div class="card lang-card a1">
+          <span class="lang-name">Arabic</span>
+          <div class="lang-bar"><div class="lang-fill"></div></div>
+          <span class="lang-level">A1 — BEGINNER</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- CONNECT -->
+  <section id="connect">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-num">06 //</span>
+        <h2 class="section-title">CON<span>NECT</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="links-grid reveal">
+        <a href="https://github.com/mustafaansari4564" target="_blank" class="link-box lb-github">
+          <div class="lb-icon"><i class="fab fa-github"></i></div>
+          <div class="lb-text">
+            <div class="lb-title">GitHub</div>
+            <div class="lb-sub">github.com/mustafaansari4564</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/mustafa-ansari-bb4058377" target="_blank" class="link-box lb-linkedin">
+          <div class="lb-icon"><i class="fab fa-linkedin"></i></div>
+          <div class="lb-text">
+            <div class="lb-title">LinkedIn</div>
+            <div class="lb-sub">mustafa-ansari-bb4058377</div>
+          </div>
+        </a>
+        <a href="mailto:mustafaansari4564@gmail.com" class="link-box lb-email">
+          <div class="lb-icon"><i class="fas fa-envelope"></i></div>
+          <div class="lb-text">
+            <div class="lb-title">Email</div>
+            <div class="lb-sub">mustafaansari4564@gmail.com</div>
+          </div>
+        </a>
+        <a href="tel:+917738373227" class="link-box lb-phone">
+          <div class="lb-icon"><i class="fas fa-phone"></i></div>
+          <div class="lb-text">
+            <div class="lb-title">Phone</div>
+            <div class="lb-sub">+91 77 3837 3227</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
 <footer>
-  <p class="neon-text-dim">Initiated connection protocols &copy; 2026. Designed with <span style="color:var(--neon-secondary);">&hearts;</span> and Neon.</p>
+  <p>© 2026 &nbsp;//&nbsp; MUSTAFA ANSARI &nbsp;// &nbsp;DESIGNED WITH <span>♥</span> AND NEON &nbsp;// &nbsp;PUNE, INDIA</p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+  function animateRing() { rx += (mx - rx) * .12; ry += (my - ry) * .12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animateRing); }
+  animateRing();
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2)'; ring.style.transform = 'translate(-50%,-50%) scale(1.5)'; });
+    el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.transform = 'translate(-50%,-50%) scale(1)'; });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => obs.observe(el));
+
+  // Typewriter for hero tag
+  const tag = document.querySelector('.hero-tag');
+  const text = '< INITIALIZING PROFILE />';
+  tag.textContent = '';
+  let i = 0;
+  function type() { if (i < text.length) { tag.textContent += text[i++]; setTimeout(type, 55); } }
+  setTimeout(type, 400);
+</script>
 </body>
 </html>
