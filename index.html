@@ -748,30 +748,21 @@
 
       </div>
 
-      <!-- ═══ THEOLOGICAL DISCOURSE BOT SUITE ═══ -->
-      <div style="display:flex; align-items:center; gap:16px; margin:60px 0 30px;" class="reveal">
-        <span class="section-num" style="opacity:.5;">// SUB-SYSTEM</span>
-        <h3 style="font-family:'Orbitron',monospace; font-size:1.05rem; font-weight:700; color:var(--neon-green); text-shadow:0 0 15px rgba(0,255,136,0.4); letter-spacing:2px;">THEOLOGICAL DISCOURSE BOT SUITE</h3>
-        <div class="section-line" style="background:linear-gradient(90deg, rgba(0,255,136,0.4), transparent);"></div>
-      </div>
-
       <!-- Burnbot (featured) -->
       <div class="card reveal" style="margin-bottom:20px;">
         <div class="project-card">
           <div>
             <div class="project-tag" style="color:var(--neon-pink);border-color:var(--neon-pink);background:rgba(255,0,170,0.08);">🔥 MODERATION BOT</div>
             <div class="project-name">Burnbot</div>
-            <p class="project-desc">Discord bot for the multi-faith "Theological Discourse" server that auto-manages a temporary "NC" role for new members, including Discord's Membership Screening flow, and expires it automatically over time.</p>
+            <p class="project-desc">Discord bot for Discord server that auto-manages a temporary role for new members, including Discord's Membership Screening flow, and expires it automatically over time.</p>
             <ul class="project-highlights">
-              <li>Auto-assigns the "NC" role on member join and pre-assigns it correctly even when Membership Screening fires before the bot's own join event.</li>
+              <li>Auto-assigns the role on member join and pre-assigns it correctly even when Membership Screening fires before the bot's own join event.</li>
               <li>Commands <code>!burn</code> / <code>!unburn</code> / <code>!kill</code> / <code>!revive</code> give staff manual control over the role.</li>
               <li>Tracks role expiry in a <code>data.json</code> store instead of relying on Discord's <code>joined_at</code> timestamp, so expiry survives restarts.</li>
-              <li>Logs every action to a dedicated moderation log channel and runs on KeritCloud.</li>
             </ul>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;">
               <span class="badge badge-pink">Python</span>
               <span class="badge badge-pink">discord.py</span>
-              <span class="badge badge-pink">KeritCloud</span>
               <span class="badge badge-pink">JSON storage</span>
             </div>
           </div>
@@ -786,6 +777,11 @@
             </div>
           </div>
         </div>
+          </div>
+          <a href="https://github.com/mustafaansari4564/Anti_raid_bot" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-green);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+            <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
+          </a>
+        </div>
       </div>
 
       <!-- Saphra Anaforas (featured) -->
@@ -794,12 +790,12 @@
           <div>
             <div class="project-tag" style="color:var(--neon-cyan);border-color:var(--neon-cyan);background:rgba(0,255,240,0.08);">📚 LIBRARY SEARCH BOT</div>
             <div class="project-name">Saphra Anaforas</div>
-            <p class="project-desc">A multilingual library search assistant for the server's archive of theological discussion threads, built from scratch around a BM25 + SQLite + OpenRouter architecture after RAM limits ruled out embedding-based search.</p>
+            <p class="project-desc">A multilingual library search assistant for the server's archive of discussion threads, built from scratch around a BM25 + SQLite + OpenRouter architecture after RAM limits ruled out embedding-based search.</p>
             <ul class="project-highlights">
               <li>Slash commands <code>/ask</code>, <code>/reindex</code>, <code>/reindex-new</code>, and <code>/reindex-thread</code> query and refresh the index.</li>
               <li>Indexes both thread body and thread name across multilingual sources, including Devanagari script, and extracts embed fields from translation-bot cards.</li>
-              <li>Runs a 16-model OpenRouter fallback chain (free models first) for resilient, low-cost answering.</li>
-              <li>Solved forum-channel indexing, embed scraping, Arabic text normalization, and a double-process bug via <code>fcntl.flock()</code> kernel-level locking on 512MB KeritCloud containers.</li>
+              <li>Runs a 10+model OpenRouter fallback chain (free models first) for resilient, low-cost answering.</li>
+              <li>Solved forum-channel indexing, embed scraping, Arabic text normalization.</li>
             </ul>
             <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;">
               <span class="badge badge-cyan">Python</span>
@@ -811,14 +807,19 @@
           </div>
           <div class="project-side">
             <div class="project-stat-box" style="border-color:rgba(0,255,240,0.2)">
-              <div class="stat-num" style="color:var(--neon-cyan);text-shadow:0 0 15px var(--neon-cyan)">16</div>
+              <div class="stat-num" style="color:var(--neon-cyan);text-shadow:0 0 15px var(--neon-cyan)">10+</div>
               <div class="stat-label">MODEL FALLBACK CHAIN</div>
             </div>
             <div class="project-stat-box">
-              <div class="stat-num">512MB</div>
+              <div class="stat-num">1GiB</div>
               <div class="stat-label">RAM CONSTRAINT</div>
             </div>
           </div>
+        </div>
+          </div>
+          <a href="https://github.com/mustafaansari4564/Search_bot" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-green);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+            <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
+          </a>
         </div>
       </div>
 
@@ -844,14 +845,19 @@
           </div>
           <div class="project-side">
             <div class="project-stat-box" style="border-color:rgba(255,230,0,0.2)">
-              <div class="stat-num" style="color:var(--neon-yellow);text-shadow:0 0 15px var(--neon-yellow)">~14.6K</div>
-              <div class="stat-label">DICTIONARY ENTRIES</div>
+              <div class="stat-num" style="color:var(--neon-yellow);text-shadow:0 0 15px var(--neon-yellow)">22+</div>
+              <div class="stat-label">DICTIONARIES</div>
             </div>
             <div class="project-stat-box">
               <div class="stat-num">4</div>
               <div class="stat-label">SLASH COMMANDS</div>
             </div>
           </div>
+        </div>
+          </div>
+          <a href="https://github.com/mustafaansari4564/Dictionary_bot" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-green);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+            <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
+          </a>
         </div>
       </div>
 
@@ -871,6 +877,11 @@
             <span class="badge badge-green">discord.py</span>
             <span class="badge badge-green">KeritCloud</span>
           </div>
+            </div>
+          <a href="https://github.com/mustafaansari4564/Music_bot" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-green);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+            <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
+          </a>
+        </div>
         </div>
 
         <!-- Lens Bot -->
@@ -886,13 +897,18 @@
             <span class="badge badge-purple">chrome-lens-py</span>
             <span class="badge badge-purple">discord.py</span>
           </div>
+            </div>
+          <a href="https://github.com/mustafaansari4564/ocr_bot" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-green);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+            <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
+          </a>
+        </div>
         </div>
 
         <!-- Linkbot -->
         <div class="card reveal" style="grid-column: 1 / -1;">
           <div class="project-tag" style="color:var(--neon-blue);border-color:rgba(0,128,255,0.3);background:rgba(0,128,255,0.06);">🔗 EARLY DISCORD BOT</div>
           <div class="project-name" style="font-size:.95rem;">Linkbot</div>
-          <p class="project-desc">One of the earliest bots built for the server — blocks unwanted links from being posted, an early step before the server's translation and library bots were built out.</p>
+          <p class="project-desc">One of the earliest bots built for Discord servers — blocks unwanted links from being posted, an early step before the server's translation and library bots were built out.</p>
           <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:14px;">
             <span class="badge badge-blue">Python</span>
             <span class="badge badge-blue">discord.py</span>
@@ -900,6 +916,11 @@
         </div>
 
       </div>
+          </div>
+          <a href="https://github.com/mustafaansari4564/Link_Restriction_bot" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-green);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+            <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
+          </a>
+        </div>
     </div>
   </section>
 
