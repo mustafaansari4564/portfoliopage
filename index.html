@@ -313,6 +313,8 @@
   .badge-yellow:hover { background: rgba(255,230,0,0.15); box-shadow: 0 0 12px rgba(255,230,0,0.3); }
   .badge-purple { color: var(--neon-purple); border-color: rgba(191,0,255,0.3); background: rgba(191,0,255,0.06); }
   .badge-purple:hover { background: rgba(191,0,255,0.15); box-shadow: 0 0 12px rgba(191,0,255,0.3); }
+  .badge-blue { color: var(--neon-blue); border-color: rgba(0,128,255,0.3); background: rgba(0,128,255,0.06); }
+  .badge-blue:hover { background: rgba(0,128,255,0.15); box-shadow: 0 0 12px rgba(0,128,255,0.3); }
 
   /* ─── PROJECT ────────────────────────────────────────── */
   .project-card { display: grid; grid-template-columns: 1fr 300px; gap: 30px; align-items: start; }
@@ -745,6 +747,159 @@
         </div>
 
       </div>
+
+      <!-- ═══ THEOLOGICAL DISCOURSE BOT SUITE ═══ -->
+      <div style="display:flex; align-items:center; gap:16px; margin:60px 0 30px;" class="reveal">
+        <span class="section-num" style="opacity:.5;">// SUB-SYSTEM</span>
+        <h3 style="font-family:'Orbitron',monospace; font-size:1.05rem; font-weight:700; color:var(--neon-green); text-shadow:0 0 15px rgba(0,255,136,0.4); letter-spacing:2px;">THEOLOGICAL DISCOURSE BOT SUITE</h3>
+        <div class="section-line" style="background:linear-gradient(90deg, rgba(0,255,136,0.4), transparent);"></div>
+      </div>
+
+      <!-- Burnbot (featured) -->
+      <div class="card reveal" style="margin-bottom:20px;">
+        <div class="project-card">
+          <div>
+            <div class="project-tag" style="color:var(--neon-pink);border-color:var(--neon-pink);background:rgba(255,0,170,0.08);">🔥 MODERATION BOT</div>
+            <div class="project-name">Burnbot</div>
+            <p class="project-desc">Discord bot for the multi-faith "Theological Discourse" server that auto-manages a temporary "NC" role for new members, including Discord's Membership Screening flow, and expires it automatically over time.</p>
+            <ul class="project-highlights">
+              <li>Auto-assigns the "NC" role on member join and pre-assigns it correctly even when Membership Screening fires before the bot's own join event.</li>
+              <li>Commands <code>!burn</code> / <code>!unburn</code> / <code>!kill</code> / <code>!revive</code> give staff manual control over the role.</li>
+              <li>Tracks role expiry in a <code>data.json</code> store instead of relying on Discord's <code>joined_at</code> timestamp, so expiry survives restarts.</li>
+              <li>Logs every action to a dedicated moderation log channel and runs on KeritCloud.</li>
+            </ul>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;">
+              <span class="badge badge-pink">Python</span>
+              <span class="badge badge-pink">discord.py</span>
+              <span class="badge badge-pink">KeritCloud</span>
+              <span class="badge badge-pink">JSON storage</span>
+            </div>
+          </div>
+          <div class="project-side">
+            <div class="project-stat-box" style="border-color:rgba(255,0,170,0.2)">
+              <div class="stat-num" style="color:var(--neon-pink);text-shadow:0 0 15px var(--neon-pink)">4</div>
+              <div class="stat-label">CORE COMMANDS</div>
+            </div>
+            <div class="project-stat-box">
+              <div class="stat-num">AUTO</div>
+              <div class="stat-label">ROLE EXPIRY</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Saphra Anaforas (featured) -->
+      <div class="card reveal" style="margin-bottom:20px;">
+        <div class="project-card">
+          <div>
+            <div class="project-tag" style="color:var(--neon-cyan);border-color:var(--neon-cyan);background:rgba(0,255,240,0.08);">📚 LIBRARY SEARCH BOT</div>
+            <div class="project-name">Saphra Anaforas</div>
+            <p class="project-desc">A multilingual library search assistant for the server's archive of theological discussion threads, built from scratch around a BM25 + SQLite + OpenRouter architecture after RAM limits ruled out embedding-based search.</p>
+            <ul class="project-highlights">
+              <li>Slash commands <code>/ask</code>, <code>/reindex</code>, <code>/reindex-new</code>, and <code>/reindex-thread</code> query and refresh the index.</li>
+              <li>Indexes both thread body and thread name across multilingual sources, including Devanagari script, and extracts embed fields from translation-bot cards.</li>
+              <li>Runs a 16-model OpenRouter fallback chain (free models first) for resilient, low-cost answering.</li>
+              <li>Solved forum-channel indexing, embed scraping, Arabic text normalization, and a double-process bug via <code>fcntl.flock()</code> kernel-level locking on 512MB KeritCloud containers.</li>
+            </ul>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;">
+              <span class="badge badge-cyan">Python</span>
+              <span class="badge badge-cyan">discord.py</span>
+              <span class="badge badge-cyan">SQLite</span>
+              <span class="badge badge-cyan">BM25</span>
+              <span class="badge badge-cyan">OpenRouter API</span>
+            </div>
+          </div>
+          <div class="project-side">
+            <div class="project-stat-box" style="border-color:rgba(0,255,240,0.2)">
+              <div class="stat-num" style="color:var(--neon-cyan);text-shadow:0 0 15px var(--neon-cyan)">16</div>
+              <div class="stat-label">MODEL FALLBACK CHAIN</div>
+            </div>
+            <div class="project-stat-box">
+              <div class="stat-num">512MB</div>
+              <div class="stat-label">RAM CONSTRAINT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lughat Bot (featured) -->
+      <div class="card reveal" style="margin-bottom:20px;">
+        <div class="project-card">
+          <div>
+            <div class="project-tag" style="color:var(--neon-yellow);border-color:var(--neon-yellow);background:rgba(255,230,0,0.08);">📖 CLASSICAL ARABIC DICTIONARY BOT</div>
+            <div class="project-name">Lughat Bot</div>
+            <p class="project-desc">A classical Arabic lexicon bot that gives the server BM25-indexed search over two major dictionaries, complete with scanned original page images and role-gated access.</p>
+            <ul class="project-highlights">
+              <li>Slash commands <code>/lisan</code>, <code>/qamus</code>, <code>/lughat</code>, and <code>/lane</code> search across Lisan al-Arab (~10,600 entries) and Qamus al-Muhit (~4,067 entries).</li>
+              <li>Custom pure-Python Arabic root extractor powers the lexicon search logic.</li>
+              <li>Streams scanned dictionary page images from ejtaal.net via a wsrv.nl proxy for the original page view.</li>
+              <li>Role-based access: unrestricted for the COD role, channel-restricted for the Library Pass role.</li>
+            </ul>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;">
+              <span class="badge badge-yellow">Python</span>
+              <span class="badge badge-yellow">discord.py</span>
+              <span class="badge badge-yellow">BM25</span>
+              <span class="badge badge-yellow">python-dotenv</span>
+            </div>
+          </div>
+          <div class="project-side">
+            <div class="project-stat-box" style="border-color:rgba(255,230,0,0.2)">
+              <div class="stat-num" style="color:var(--neon-yellow);text-shadow:0 0 15px var(--neon-yellow)">~14.6K</div>
+              <div class="stat-label">DICTIONARY ENTRIES</div>
+            </div>
+            <div class="project-stat-box">
+              <div class="stat-num">4</div>
+              <div class="stat-label">SLASH COMMANDS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Music / Linkbot / Lens bot: 2-column grid -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+
+        <!-- Music Bot -->
+        <div class="card reveal">
+          <div class="project-tag" style="color:var(--neon-green);border-color:rgba(0,255,136,0.3);background:rgba(0,255,136,0.06);">🎵 DISCORD BOT</div>
+          <div class="project-name" style="font-size:.95rem;">Music Bot</div>
+          <p class="project-desc">Fully-featured music bot for the server with YouTube, Instagram, and file playback, an interactive dashboard, and loop mode.</p>
+          <ul class="project-highlights">
+            <li>Interactive playback dashboard with loop mode and multi-source track support.</li>
+          </ul>
+          <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:14px;">
+            <span class="badge badge-green">Python</span>
+            <span class="badge badge-green">discord.py</span>
+            <span class="badge badge-green">KeritCloud</span>
+          </div>
+        </div>
+
+        <!-- Lens Bot -->
+        <div class="card reveal">
+          <div class="project-tag" style="color:var(--neon-purple);border-color:rgba(191,0,255,0.3);background:rgba(191,0,255,0.06);">🔍 DISCORD BOT</div>
+          <div class="project-name" style="font-size:.95rem;">Lens Bot (OCR Layer)</div>
+          <p class="project-desc">Optical character recognition layer shared across the translation bots, extracting text from images using <code>chrome-lens-py</code> so scripture and manuscript images can be translated directly.</p>
+          <ul class="project-highlights">
+            <li>Fully replaced the earlier OpenRouter vision fallback with dedicated OCR via <code>chrome-lens-py</code> v3+.</li>
+          </ul>
+          <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:14px;">
+            <span class="badge badge-purple">Python</span>
+            <span class="badge badge-purple">chrome-lens-py</span>
+            <span class="badge badge-purple">discord.py</span>
+          </div>
+        </div>
+
+        <!-- Linkbot -->
+        <div class="card reveal" style="grid-column: 1 / -1;">
+          <div class="project-tag" style="color:var(--neon-blue);border-color:rgba(0,128,255,0.3);background:rgba(0,128,255,0.06);">🔗 EARLY DISCORD BOT</div>
+          <div class="project-name" style="font-size:.95rem;">Linkbot</div>
+          <p class="project-desc">One of the earliest bots built for the server — blocks unwanted links from being posted, an early step before the server's translation and library bots were built out.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:14px;">
+            <span class="badge badge-blue">Python</span>
+            <span class="badge badge-blue">discord.py</span>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -900,8 +1055,8 @@
 
   // Responsive project grid
   function fixProjectGrid() {
-    const grid = document.querySelector('#projects > .container > div[style*="grid-template-columns:1fr 1fr"]');
-    if (grid) grid.style.gridTemplateColumns = window.innerWidth <= 768 ? '1fr' : '1fr 1fr';
+    const grids = document.querySelectorAll('#projects > .container > div[style*="grid-template-columns:1fr 1fr"]');
+    grids.forEach(grid => { grid.style.gridTemplateColumns = window.innerWidth <= 768 ? '1fr' : '1fr 1fr'; });
   }
   fixProjectGrid();
   window.addEventListener('resize', fixProjectGrid);
