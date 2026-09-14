@@ -285,7 +285,7 @@
   .about-stat-label { font-size: .85rem; color: var(--text-dim); letter-spacing: 2px; margin-top: 6px; font-family: 'Share Tech Mono', monospace; }
 
   /* ─── SKILLS ─────────────────────────────────────────── */
-  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 
   .skill-card { text-align: center; padding: 30px 20px; }
   .skill-icon { font-size: 2rem; margin-bottom: 14px; }
@@ -610,6 +610,23 @@
           <div class="badge-wrap">
             <span class="badge badge-green">Generative AI</span>
             <span class="badge badge-green">Data Science</span>
+            <span class="badge badge-green">Machine Learning / NLP</span>
+            <span class="badge badge-green">BM25 / Information Retrieval</span>
+            <span class="badge badge-green">OCR Pipelines</span>
+            <span class="badge badge-green">REST APIs</span>
+            <span class="badge badge-green">Agentic AI / MCP</span>
+          </div>
+        </div>
+        <div class="card skill-card reveal" style="--delay:.3s">
+          <div class="skill-icon" style="color:var(--neon-yellow)">📦</div>
+          <div class="skill-card-title" style="color:var(--neon-yellow)">LIBRARIES & FRAMEWORKS</div>
+          <div class="badge-wrap">
+            <span class="badge badge-yellow">scikit-learn</span>
+            <span class="badge badge-yellow">pandas</span>
+            <span class="badge badge-yellow">NumPy</span>
+            <span class="badge badge-yellow">discord.py</span>
+            <span class="badge badge-yellow">Flask</span>
+            <span class="badge badge-yellow">FastAPI</span>
           </div>
         </div>
       </div>
@@ -723,6 +740,26 @@
             <span class="badge badge-green">Flask</span>
           </div>
           <a href="https://github.com/mustafaansari4564/Sanskrit_Translation_bot" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-green);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+            <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
+          </a>
+        </div>
+
+        <!-- Project: Fake News Detector -->
+        <div class="card reveal">
+          <div class="project-tag" style="color:var(--neon-yellow);border-color:rgba(255,230,0,0.3);background:rgba(255,230,0,0.06);">🤖 MACHINE LEARNING</div>
+          <div class="project-name" style="font-size:.95rem;">AI Fake News Detector</div>
+          <p class="project-desc">NLP-based classifier that flags whether a news article is real or fake, trained on 40,000+ articles with publisher bias removed so the model learns genuine linguistic patterns instead of source cues.</p>
+          <ul class="project-highlights">
+            <li>Passive-Aggressive Classifier over TF-IDF vectorized text reaches 98.65% accuracy; deployed as a live Streamlit app with a CLI for quick testing.</li>
+          </ul>
+          <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:14px;">
+            <span class="badge badge-yellow">Python</span>
+            <span class="badge badge-yellow">scikit-learn</span>
+            <span class="badge badge-yellow">pandas</span>
+            <span class="badge badge-yellow">NumPy</span>
+            <span class="badge badge-yellow">Streamlit</span>
+          </div>
+          <a href="https://github.com/mustafaansari4564/fake-news-detector" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-yellow);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
             <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
           </a>
         </div>
@@ -905,7 +942,114 @@
           <a href="https://github.com/mustafaansari4564/Link_Restriction_bot" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-green);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
             <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
           </a>
+        <!-- Scanpages Bot -->
+        <div class="card reveal">
+          <div class="project-tag" style="color:var(--neon-yellow);border-color:rgba(255,230,0,0.3);background:rgba(255,230,0,0.06);">📖 DISCORD BOT</div>
+          <div class="project-name" style="font-size:.95rem;">Scanpages Bot</div>
+          <p class="project-desc">Discord bot for looking up and viewing pages from the turath.io Islamic library — fetches real scanned page images when available and falls back to a styled Arabic text render when not.</p>
+          <ul class="project-highlights">
+            <li>9 slash commands covering book lookup with autocomplete, page ranges, hadith-number lookup, and full-text search across the entire catalog.</li>
+          </ul>
+          <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:14px;">
+            <span class="badge badge-yellow">Python</span>
+            <span class="badge badge-yellow">discord.py</span>
+            <span class="badge badge-yellow">turath.io API</span>
+          </div>
+          <a href="https://github.com/mustafaansari4564/Scanpages_bot" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-yellow);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+            <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
+          </a>
         </div>
+
+        <!-- Personal Research Bot -->
+        <div class="card reveal">
+          <div class="project-tag" style="color:var(--neon-blue);border-color:rgba(0,128,255,0.3);background:rgba(0,128,255,0.06);">🗂️ DISCORD BOT</div>
+          <div class="project-name" style="font-size:.95rem;">Personal Research Bot</div>
+          <p class="project-desc">Concierge bot that spins up a private, permission-wired channel per role-gated user to run the server's other bots privately, then closes out with a DM transcript and archived record.</p>
+          <ul class="project-highlights">
+            <li>Handles the full session lifecycle: private channel creation, permission wiring, and an end-of-session DM/archive flow under a unique codeword.</li>
+          </ul>
+          <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:14px;">
+            <span class="badge badge-blue">Python</span>
+            <span class="badge badge-blue">discord.py</span>
+            <span class="badge badge-blue">SQLite</span>
+          </div>
+          <a href="https://github.com/mustafaansari4564/Customized_research_discord_bot" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-blue);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+            <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- MerchantAgent (featured) -->
+      <div class="card reveal" style="margin-top:20px; margin-bottom:20px;">
+        <div class="project-card">
+          <div>
+            <div class="project-tag" style="color:var(--neon-cyan);border-color:var(--neon-cyan);background:rgba(0,255,240,0.08);">🛒 AI SHOPPING AGENT</div>
+            <div class="project-name">MerchantAgent</div>
+            <p class="project-desc">A chat-based agent that searches multiple platforms for the cheapest price on a product, then lets the user add to cart, apply a coupon, and pay via Razorpay — all inside the conversation.</p>
+            <ul class="project-highlights">
+              <li>Tool-calling agent aggregates and deduplicates results across 4 search providers (Amazon, Flipkart, Google Shopping, DuckDuckGo).</li>
+              <li>FastAPI backend wires cart, coupon, and Razorpay order-creation tools together; covered by a 26-test suite and deployable via Docker/Railway.</li>
+            </ul>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;">
+              <span class="badge badge-cyan">Python</span>
+              <span class="badge badge-cyan">FastAPI</span>
+              <span class="badge badge-cyan">OpenRouter API</span>
+              <span class="badge badge-cyan">Razorpay</span>
+              <span class="badge badge-cyan">Docker</span>
+            </div>
+          </div>
+          <div class="project-side">
+            <div class="project-stat-box" style="border-color:rgba(0,255,240,0.2)">
+              <div class="stat-num" style="color:var(--neon-cyan);text-shadow:0 0 15px var(--neon-cyan)">4</div>
+              <div class="stat-label">SEARCH PROVIDERS</div>
+            </div>
+            <div class="project-stat-box">
+              <div class="stat-num">26</div>
+              <div class="stat-label">TESTS PASSING</div>
+            </div>
+          </div>
+        </div>
+        <a href="https://github.com/mustafaansari4564/merchant-agent" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-cyan);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+          <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
+        </a>
+      </div>
+
+      <!-- SMS AI Agent (featured) -->
+      <div class="card reveal" style="margin-bottom:20px;">
+        <div class="project-card">
+          <div>
+            <div class="project-tag" style="color:var(--neon-purple);border-color:var(--neon-purple);background:rgba(191,0,255,0.08);">📱 AI AGENT</div>
+            <div class="project-name">SMS AI Agent</div>
+            <p class="project-desc">A standalone AI-powered SMS agent: incoming texts arrive via the TextBee gateway, a FastAPI webhook hands them to a local AI agent that can call MCP tools, and the reply is sent back over SMS.</p>
+            <ul class="project-highlights">
+              <li>Full production pipeline: TextBee webhook → SQLite → async background worker → local Ollama model → MCP tools → SMS-aware reply splitting → delivery-status tracking.</li>
+              <li>Hardened for production with a dedicated deployment, HTTPS, security, and backup guide.</li>
+            </ul>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;">
+              <span class="badge badge-purple">Python</span>
+              <span class="badge badge-purple">FastAPI</span>
+              <span class="badge badge-purple">Ollama</span>
+              <span class="badge badge-purple">MCP</span>
+              <span class="badge badge-purple">SQLite</span>
+              <span class="badge badge-purple">TextBee</span>
+            </div>
+          </div>
+          <div class="project-side">
+            <div class="project-stat-box" style="border-color:rgba(191,0,255,0.2)">
+              <div class="stat-num" style="color:var(--neon-purple);text-shadow:0 0 15px var(--neon-purple)">LOCAL</div>
+              <div class="stat-label">OLLAMA MODEL</div>
+            </div>
+            <div class="project-stat-box">
+              <div class="stat-num">ASYNC</div>
+              <div class="stat-label">WORKER PIPELINE</div>
+            </div>
+          </div>
+        </div>
+        <a href="https://github.com/mustafaansari4564/mcp-sms-agent" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'Share Tech Mono',monospace;font-size:.75px;color:var(--neon-purple);text-decoration:none;opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+          <i class="fab fa-github"></i> <span style="font-size:.75rem;">View on GitHub</span>
+        </a>
+      </div>
   </section>
 
   <!-- EDUCATION -->
